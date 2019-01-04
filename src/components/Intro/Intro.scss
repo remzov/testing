@@ -1,0 +1,29 @@
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vmin;
+}
+
+.intro__title {
+  margin-bottom: 30px;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.intro__desc {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 22px;
+  color: #000;
+}
+
+.intro__submit {
+  padding: 15px;
+  border: none;
+  background: #000;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+}
