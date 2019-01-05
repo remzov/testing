@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BtnNext from '../BtnNext/BtnNext';
 import './Intro.scss';
 
 export default class Intro extends Component {
@@ -11,7 +12,7 @@ export default class Intro extends Component {
         <div className="intro__desc">
           Аджива, конечно, философски творит закон внешнего мира. Искусство осмысленно транспонирует смысл жизни. Аксиома силлогизма, как следует из вышесказанного, нетривиальна.
         </div>
-        <button className="intro__submit" onClick={this.props.setReady}>Поехали!</button>
+        <BtnNext clickHandler={this.props.setReady}/>
       </div>
     );
   }

@@ -1,8 +1,12 @@
 .app {
-  font-family: 'Arial', sans-serif; 
+  font-family: 'Arial', sans-serif;
 }
 
 .app__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   max-width: 960px;
+  min-height: 100vmin;
   margin: 0 auto;
 }

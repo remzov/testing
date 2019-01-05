@@ -1,1 +1,7 @@
-export const SET_READY = 'SET_READY';
+const SET_READY = 'SET_READY';
+const NEXT_QUESTION = 'NEXT_QUESTION';
+
+export default {
+  SET_READY,
+  NEXT_QUESTION
+}

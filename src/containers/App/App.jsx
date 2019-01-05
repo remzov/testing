@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setReady } from '../../actions/intro';
+import { setReady } from '../../actions/index';
 import Intro from '../../components/Intro/Intro';
-import QuestionsList from '../../containers/QuestionsList/QuestionsList';
+import Finish from '../../components/Finish/Finish';
+import QuestionsPool from '../QuestionsPool/QuestionsPool';
+import questionsList from '../../questions.json';
 import './App.scss';
 
 class App extends Component {
@@ -10,19 +12,26 @@ class App extends Component {
     return (
       <div className="app">
         <div className="app__container">
-          {(!this.props.ready) ? <Intro setReady={this.props.setReady}/> : false}
-          {(this.props.ready) ? <QuestionsList/> : false}
+          {(!this.props.userReady) ? <Intro setReady={this.props.setReady}/> : false }
+          {(this.props.userReady && !this.props.userFinished) ? <QuestionsPool questionsList={questionsList}/> : false }
+          {(this.props.userFinished) ? <Finish /> : false}
         </div>
       </div>
     );
   }
 }
 
-export default connect(
-  state => ({
-    ready: state.ready,
-  }),
-  dispatch => ({
-    setReady: () => dispatch(setReady()),
-  })
-)(App);
+function mapStateToProps(state) {
+  return {
+    userReady: state.userReady,
+    userFinished: state.userFinished
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setReady: () => dispatch(setReady())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,42 +1,36 @@
 import React, { Component } from 'react';
+import BtnNext from '../BtnNext/BtnNext';
+import './Question.scss';
 
 export default class Question extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {picked: false};
+    this.showNextBtn = this.showNextBtn.bind(this);
+  }
   render() {
     return (
       <div className="question">
-        <div className="question__counter">
-          1/7
-        </div>
         <div className="question__text">
-          Сколько будет 2 x 2?
+          {this.props.questionText}
         </div>
-        <ul>
-          <li>
-            <label>
-              <input type="radio" value="1"/>
-              Один
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="radio" value="1"/>
-              Два
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="radio" value="1"/>
-              Три
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="radio" value="1"/>
-              Четыре
-            </label>
-          </li>
+        <ul className="question__variants">
+          {this.props.questionVariants.map((variant, index) =>
+            <li className="question__variant" key={index}>
+              <label>
+                <input onInput={this.showNextBtn} className="question__input" type="radio" name={`question-${this.props.questionId}`} value={variant}/>
+                {variant}
+              </label>
+            </li>
+          )}
         </ul>
+        {(this.picked) ? <BtnNext clickHandler={this.props.nextQuestion}/> : false}
       </div>
     );
+  }
+  showNextBtn() {
+    this.setState((state) => ({
+      picked: true
+    }));
   }
 }
