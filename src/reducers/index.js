@@ -4,7 +4,8 @@ import questionsList from '../questions.json';
 const initialState = {
   userReady: false,
   userFinished: false,
-  active: 0
+  active: 0,
+  points: 0
 }
 
 export default (state = initialState, action) => {
@@ -13,6 +14,8 @@ export default (state = initialState, action) => {
 			return {...state, userReady: true}
     case actionTypes.NEXT_QUESTION:
       return nextHandler(state);
+    case actionTypes.ADD_POINT:
+      return {...state, points: ++state.points}
 		default:
       return state;
 	}

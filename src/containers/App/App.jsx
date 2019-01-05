@@ -14,7 +14,7 @@ class App extends Component {
         <div className="app__container">
           {(!this.props.userReady) ? <Intro setReady={this.props.setReady}/> : false }
           {(this.props.userReady && !this.props.userFinished) ? <QuestionsPool questionsList={questionsList}/> : false }
-          {(this.props.userFinished) ? <Finish /> : false}
+          {(this.props.userFinished) ? <Finish points={this.props.points}/> : false}
         </div>
       </div>
     );
@@ -24,7 +24,8 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     userReady: state.userReady,
-    userFinished: state.userFinished
+    userFinished: state.userFinished,
+    points: state.points
   }
 }
 

@@ -1,7 +1,9 @@
 const SET_READY = 'SET_READY';
 const NEXT_QUESTION = 'NEXT_QUESTION';
+const ADD_POINT = 'ADD_POINT';
 
 export default {
   SET_READY,
-  NEXT_QUESTION
+  NEXT_QUESTION,
+  ADD_POINT
 }

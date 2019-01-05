@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from '../../components/Question/Question';
-import {nextQuestion} from '../../actions/index';
+import {nextQuestion, addPoint} from '../../actions/index';
 import './QuestionPool.scss';
 
 class QuestionPool extends Component {
@@ -17,6 +17,7 @@ class QuestionPool extends Component {
           questionVariants={this.props.questionsList[this.props.active].variants}
           questionAnswer={this.props.questionsList[this.props.active].answer}
           nextQuestion={this.props.nextQuestion}
+          addPoint={this.props.addPoint}
         />
       </div>
     );
@@ -26,13 +27,14 @@ class QuestionPool extends Component {
 function mapStateToProps(state) {
   return {
     active: state.active,
-    userFinished: state.userFinished,
+    userFinished: state.userFinished
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    nextQuestion: () => dispatch(nextQuestion())
+    nextQuestion: () => dispatch(nextQuestion()),
+    addPoint: () => dispatch(addPoint())
   }
 }
 

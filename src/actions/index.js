@@ -11,3 +11,9 @@ export function nextQuestion() {
     type: actionTypes.NEXT_QUESTION
   }
 }
+
+export function addPoint() {
+  return {
+    type: actionTypes.ADD_POINT
+  }
+}
